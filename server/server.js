@@ -15,7 +15,6 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: true,
-    useUnifiedTopology: true
   })
   .then(() => console.log("DB CONNECTED"))
   .catch((err) => console.log("DB CONNECTION ERR", err));
@@ -25,12 +24,10 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
- 
 // routes middleware
 readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
-
 // port
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8001;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
