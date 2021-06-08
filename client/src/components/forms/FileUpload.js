@@ -2,6 +2,7 @@ import React from "react";
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { useSelector } from "react-redux";
+
 import { Avatar, Badge } from "antd";
 
 const FileUpload = ({ values, setValues, setLoading }) => {
@@ -15,6 +16,19 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
     if (files) {
       setLoading(true);
+
+const FileUpload = () => {
+  const { user } = useSelector((state) => ({ ...state }));
+
+const FileUpload = () => {
+  const fileUploadAndResize = (e) => {
+    // console.log(e.target.files);
+    // resize
+    console.log(e.target.files);
+    // resize
+    let files = e.target.files; // 3
+    if (files) {
+
       for (let i = 0; i < files.length; i++) {
         Resizer.imageFileResizer(
           files[i],
@@ -46,6 +60,9 @@ const FileUpload = ({ values, setValues, setLoading }) => {
                 setLoading(false);
                 console.log("CLOUDINARY UPLOAD ERR", err);
               });
+
+            console.log(uri);
+
           },
           "base64"
         );
@@ -54,6 +71,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
     // send back to server to upload to cloudinary
     // set url to images[] in the parent component state - ProductCreate
   };
+
 
   const handleImageRemove = (public_id) => {
     setLoading(true);
@@ -115,6 +133,21 @@ const FileUpload = ({ values, setValues, setLoading }) => {
         </label>
       </div>
     </>
+
+  return (
+    <div className="row">
+      <label className="btn btn-primary">
+        Choose File
+        <input
+          type="file"
+          multiple
+          hidden
+          accept="images/*"
+          onChange={fileUploadAndResize}
+        />
+      </label>
+    </div>
+
   );
 };
 
