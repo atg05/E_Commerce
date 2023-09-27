@@ -110,7 +110,7 @@ Before installing and running the application, make sure you have the following 
 1. Clone the repository from GitHub.
 
    ```bash
-   git clone https://github.com/your/repo.git
+   git clone https://github.com/atg05/E_Commerce.git
    ```
 
 2. Install server dependencies.
